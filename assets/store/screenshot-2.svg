@@ -1,0 +1,136 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="800" viewBox="0 0 1280 800">
+  <defs>
+    <linearGradient id="sidebar-bg" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#f8fafc"/>
+      <stop offset="100%" style="stop-color:#f1f5f9"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Browser chrome background -->
+  <rect width="1280" height="800" fill="#e2e8f0"/>
+
+  <!-- Browser toolbar -->
+  <rect x="0" y="0" width="1280" height="72" fill="#f1f5f9" stroke="#e2e8f0" stroke-width="1"/>
+  <circle cx="24" cy="36" r="7" fill="#ef4444" opacity="0.8"/>
+  <circle cx="44" cy="36" r="7" fill="#eab308" opacity="0.8"/>
+  <circle cx="64" cy="36" r="7" fill="#22c55e" opacity="0.8"/>
+  <rect x="200" y="16" width="600" height="40" rx="20" fill="#e2e8f0"/>
+  <text x="500" y="41" text-anchor="middle" font-family="Inter, system-ui, sans-serif" font-size="13" fill="#64748b">chatgpt.com</text>
+
+  <!-- Main page area -->
+  <rect x="0" y="72" width="900" height="728" fill="#ffffff"/>
+  <text x="450" y="400" text-anchor="middle" font-family="Inter, system-ui, sans-serif" font-size="24" font-weight="300" fill="#cbd5e1">AI Chat Interface</text>
+
+  <!-- Sidebar panel -->
+  <rect x="900" y="72" width="380" height="728" fill="url(#sidebar-bg)" stroke="#e2e8f0" stroke-width="1"/>
+
+  <!-- Sidebar header -->
+  <rect x="900" y="72" width="380" height="56" fill="#ffffff" stroke="#e2e8f0" stroke-width="1"/>
+  <g transform="translate(920, 88)">
+    <rect x="0" y="0" width="28" height="24" rx="4" fill="#6366f1" opacity="0.15"/>
+    <rect x="6" y="6" width="16" height="2" rx="1" fill="#6366f1"/>
+    <rect x="6" y="11" width="12" height="2" rx="1" fill="#6366f1"/>
+    <rect x="6" y="16" width="14" height="2" rx="1" fill="#6366f1"/>
+  </g>
+  <text x="958" y="105" font-family="Inter, system-ui, sans-serif" font-size="15" font-weight="700" fill="#0f172a">MTP Workbench</text>
+
+  <!-- Tab bar -->
+  <g transform="translate(900, 128)">
+    <rect x="0" y="0" width="380" height="40" fill="#ffffff"/>
+    <text x="56" y="27" text-anchor="middle" font-family="Inter, system-ui, sans-serif" font-size="11" font-weight="500" fill="#64748b">Projects</text>
+    <rect x="96" y="8" width="80" height="28" rx="6" fill="#6366f1"/>
+    <text x="136" y="27" text-anchor="middle" font-family="Inter, system-ui, sans-serif" font-size="11" font-weight="600" fill="white">Compose</text>
+    <text x="200" y="27" text-anchor="middle" font-family="Inter, system-ui, sans-serif" font-size="11" font-weight="500" fill="#64748b">Track</text>
+    <text x="264" y="27" text-anchor="middle" font-family="Inter, system-ui, sans-serif" font-size="11" font-weight="500" fill="#64748b">Settings</text>
+    <rect x="0" y="39" width="380" height="1" fill="#e2e8f0"/>
+  </g>
+
+  <!-- Compose view content -->
+
+  <!-- Section: Project selector -->
+  <g transform="translate(916, 184)">
+    <text x="0" y="0" font-family="Inter, system-ui, sans-serif" font-size="11" font-weight="600" fill="#64748b" letter-spacing="0.5">PROJECT</text>
+    <rect x="0" y="10" width="348" height="36" rx="8" fill="#ffffff" stroke="#e2e8f0" stroke-width="1"/>
+    <text x="12" y="33" font-family="Inter, system-ui, sans-serif" font-size="13" font-weight="500" fill="#0f172a">Churn Risk Scoring</text>
+    <!-- Chevron -->
+    <polyline points="326,25 332,31 338,25" fill="none" stroke="#94a3b8" stroke-width="1.5" stroke-linecap="round"/>
+  </g>
+
+  <!-- Section: Context Selection -->
+  <g transform="translate(916, 250)">
+    <text x="0" y="0" font-family="Inter, system-ui, sans-serif" font-size="11" font-weight="600" fill="#64748b" letter-spacing="0.5">CONTEXT</text>
+
+    <!-- Checkbox items -->
+    <g transform="translate(0, 16)">
+      <!-- Item 1 - checked -->
+      <rect x="0" y="0" width="348" height="40" rx="8" fill="#eef2ff" stroke="#c7d2fe" stroke-width="1"/>
+      <rect x="12" y="12" width="16" height="16" rx="3" fill="#6366f1"/>
+      <polyline points="16,20 19,23 24,17" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+      <text x="38" y="24" font-family="Inter, system-ui, sans-serif" font-size="12" font-weight="500" fill="#0f172a">Data preprocessing steps</text>
+      <text x="38" y="36" font-family="Inter, system-ui, sans-serif" font-size="9" fill="#6366f1">package v1.2</text>
+    </g>
+
+    <g transform="translate(0, 62)">
+      <!-- Item 2 - checked -->
+      <rect x="0" y="0" width="348" height="40" rx="8" fill="#eef2ff" stroke="#c7d2fe" stroke-width="1"/>
+      <rect x="12" y="12" width="16" height="16" rx="3" fill="#6366f1"/>
+      <polyline points="16,20 19,23 24,17" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+      <text x="38" y="24" font-family="Inter, system-ui, sans-serif" font-size="12" font-weight="500" fill="#0f172a">Model evaluation criteria</text>
+      <text x="38" y="36" font-family="Inter, system-ui, sans-serif" font-size="9" fill="#6366f1">package v0.9</text>
+    </g>
+
+    <g transform="translate(0, 108)">
+      <!-- Item 3 - unchecked -->
+      <rect x="0" y="0" width="348" height="40" rx="8" fill="#ffffff" stroke="#e2e8f0" stroke-width="1"/>
+      <rect x="12" y="12" width="16" height="16" rx="3" fill="none" stroke="#cbd5e1" stroke-width="1.5"/>
+      <text x="38" y="24" font-family="Inter, system-ui, sans-serif" font-size="12" font-weight="500" fill="#0f172a">Deployment checklist</text>
+      <text x="38" y="36" font-family="Inter, system-ui, sans-serif" font-size="9" fill="#94a3b8">package v1.0</text>
+    </g>
+  </g>
+
+  <!-- Section: Instructions -->
+  <g transform="translate(916, 440)">
+    <text x="0" y="0" font-family="Inter, system-ui, sans-serif" font-size="11" font-weight="600" fill="#64748b" letter-spacing="0.5">INSTRUCTIONS</text>
+    <rect x="0" y="12" width="348" height="80" rx="8" fill="#ffffff" stroke="#e2e8f0" stroke-width="1"/>
+    <text x="12" y="36" font-family="Inter, system-ui, sans-serif" font-size="12" fill="#0f172a">Analyze the customer dataset using</text>
+    <text x="12" y="52" font-family="Inter, system-ui, sans-serif" font-size="12" fill="#0f172a">the preprocessing steps, then evaluate</text>
+    <text x="12" y="68" font-family="Inter, system-ui, sans-serif" font-size="12" fill="#0f172a">results against the scoring criteria.</text>
+    <line x1="302" y1="68" x2="302" y2="56" stroke="#6366f1" stroke-width="2" opacity="0.6"/>
+  </g>
+
+  <!-- Section: Platform selector -->
+  <g transform="translate(916, 546)">
+    <text x="0" y="0" font-family="Inter, system-ui, sans-serif" font-size="11" font-weight="600" fill="#64748b" letter-spacing="0.5">TARGET PLATFORM</text>
+    <g transform="translate(0, 14)">
+      <rect x="0" y="0" width="80" height="32" rx="6" fill="#ffffff" stroke="#e2e8f0" stroke-width="1"/>
+      <text x="40" y="21" text-anchor="middle" font-family="Inter, system-ui, sans-serif" font-size="11" font-weight="500" fill="#64748b">Claude</text>
+
+      <rect x="88" y="0" width="88" height="32" rx="6" fill="#6366f1"/>
+      <text x="132" y="21" text-anchor="middle" font-family="Inter, system-ui, sans-serif" font-size="11" font-weight="600" fill="white">ChatGPT</text>
+
+      <rect x="184" y="0" width="80" height="32" rx="6" fill="#ffffff" stroke="#e2e8f0" stroke-width="1"/>
+      <text x="224" y="21" text-anchor="middle" font-family="Inter, system-ui, sans-serif" font-size="11" font-weight="500" fill="#64748b">Gemini</text>
+
+      <rect x="272" y="0" width="76" height="32" rx="6" fill="#ffffff" stroke="#e2e8f0" stroke-width="1"/>
+      <text x="310" y="21" text-anchor="middle" font-family="Inter, system-ui, sans-serif" font-size="11" font-weight="500" fill="#64748b">Copilot</text>
+    </g>
+  </g>
+
+  <!-- Section: Prompt Preview -->
+  <g transform="translate(916, 610)">
+    <text x="0" y="0" font-family="Inter, system-ui, sans-serif" font-size="11" font-weight="600" fill="#64748b" letter-spacing="0.5">PROMPT PREVIEW</text>
+    <rect x="0" y="12" width="348" height="80" rx="8" fill="#1e293b"/>
+    <text x="12" y="32" font-family="JetBrains Mono, monospace" font-size="10" fill="#94a3b8">// Generated prompt (2 packages + instructions)</text>
+    <text x="12" y="48" font-family="JetBrains Mono, monospace" font-size="10" fill="#a5b4fc">## Context: Data preprocessing steps</text>
+    <text x="12" y="62" font-family="JetBrains Mono, monospace" font-size="10" fill="#e2e8f0">1. Load CSV from /data/customers...</text>
+    <text x="12" y="76" font-family="JetBrains Mono, monospace" font-size="10" fill="#e2e8f0">2. Clean missing values using...</text>
+  </g>
+
+  <!-- Compose button -->
+  <g transform="translate(916, 710)">
+    <rect x="0" y="0" width="240" height="42" rx="8" fill="#6366f1"/>
+    <text x="120" y="26" text-anchor="middle" font-family="Inter, system-ui, sans-serif" font-size="13" font-weight="600" fill="white">Copy to Clipboard</text>
+    <rect x="252" y="0" width="96" height="42" rx="8" fill="#ffffff" stroke="#e2e8f0" stroke-width="1"/>
+    <text x="300" y="26" text-anchor="middle" font-family="Inter, system-ui, sans-serif" font-size="13" font-weight="500" fill="#64748b">Inject</text>
+  </g>
+</svg>

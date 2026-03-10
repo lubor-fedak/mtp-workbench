@@ -1,0 +1,175 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="800" viewBox="0 0 1280 800">
+  <defs>
+    <linearGradient id="sidebar-bg" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#f8fafc"/>
+      <stop offset="100%" style="stop-color:#f1f5f9"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Browser chrome background -->
+  <rect width="1280" height="800" fill="#e2e8f0"/>
+
+  <!-- Browser toolbar -->
+  <rect x="0" y="0" width="1280" height="72" fill="#f1f5f9" stroke="#e2e8f0" stroke-width="1"/>
+  <circle cx="24" cy="36" r="7" fill="#ef4444" opacity="0.8"/>
+  <circle cx="44" cy="36" r="7" fill="#eab308" opacity="0.8"/>
+  <circle cx="64" cy="36" r="7" fill="#22c55e" opacity="0.8"/>
+  <rect x="200" y="16" width="600" height="40" rx="20" fill="#e2e8f0"/>
+  <text x="500" y="41" text-anchor="middle" font-family="Inter, system-ui, sans-serif" font-size="13" fill="#64748b">gemini.google.com</text>
+
+  <!-- Main page area -->
+  <rect x="0" y="72" width="900" height="728" fill="#ffffff"/>
+  <text x="450" y="400" text-anchor="middle" font-family="Inter, system-ui, sans-serif" font-size="24" font-weight="300" fill="#cbd5e1">AI Chat Interface</text>
+
+  <!-- Sidebar panel -->
+  <rect x="900" y="72" width="380" height="728" fill="url(#sidebar-bg)" stroke="#e2e8f0" stroke-width="1"/>
+
+  <!-- Sidebar header -->
+  <rect x="900" y="72" width="380" height="56" fill="#ffffff" stroke="#e2e8f0" stroke-width="1"/>
+  <g transform="translate(920, 88)">
+    <rect x="0" y="0" width="28" height="24" rx="4" fill="#6366f1" opacity="0.15"/>
+    <rect x="6" y="6" width="16" height="2" rx="1" fill="#6366f1"/>
+    <rect x="6" y="11" width="12" height="2" rx="1" fill="#6366f1"/>
+    <rect x="6" y="16" width="14" height="2" rx="1" fill="#6366f1"/>
+  </g>
+  <text x="958" y="105" font-family="Inter, system-ui, sans-serif" font-size="15" font-weight="700" fill="#0f172a">MTP Workbench</text>
+
+  <!-- Tab bar -->
+  <g transform="translate(900, 128)">
+    <rect x="0" y="0" width="380" height="40" fill="#ffffff"/>
+    <text x="56" y="27" text-anchor="middle" font-family="Inter, system-ui, sans-serif" font-size="11" font-weight="500" fill="#64748b">Projects</text>
+    <text x="136" y="27" text-anchor="middle" font-family="Inter, system-ui, sans-serif" font-size="11" font-weight="500" fill="#64748b">Compose</text>
+    <text x="200" y="27" text-anchor="middle" font-family="Inter, system-ui, sans-serif" font-size="11" font-weight="500" fill="#64748b">Track</text>
+    <rect x="224" y="8" width="80" height="28" rx="6" fill="#6366f1"/>
+    <text x="264" y="27" text-anchor="middle" font-family="Inter, system-ui, sans-serif" font-size="11" font-weight="600" fill="white">Settings</text>
+    <rect x="0" y="39" width="380" height="1" fill="#e2e8f0"/>
+  </g>
+
+  <!-- Settings content -->
+
+  <!-- Section: Appearance -->
+  <g transform="translate(916, 186)">
+    <text x="0" y="0" font-family="Inter, system-ui, sans-serif" font-size="13" font-weight="700" fill="#0f172a">Appearance</text>
+
+    <!-- Theme toggle -->
+    <g transform="translate(0, 20)">
+      <text x="0" y="14" font-family="Inter, system-ui, sans-serif" font-size="12" font-weight="500" fill="#334155">Theme</text>
+      <g transform="translate(200, 0)">
+        <rect x="0" y="0" width="148" height="32" rx="6" fill="#e2e8f0"/>
+        <rect x="2" y="2" width="72" height="28" rx="5" fill="#ffffff" stroke="#cbd5e1" stroke-width="0.5"/>
+        <text x="38" y="21" text-anchor="middle" font-family="Inter, system-ui, sans-serif" font-size="11" font-weight="600" fill="#0f172a">Light</text>
+        <text x="112" y="21" text-anchor="middle" font-family="Inter, system-ui, sans-serif" font-size="11" font-weight="500" fill="#64748b">Dark</text>
+      </g>
+    </g>
+
+    <!-- Accent color -->
+    <g transform="translate(0, 64)">
+      <text x="0" y="14" font-family="Inter, system-ui, sans-serif" font-size="12" font-weight="500" fill="#334155">Accent Color</text>
+      <g transform="translate(200, 0)">
+        <!-- Color circles -->
+        <circle cx="14" cy="14" r="12" fill="#6366f1" stroke="#4f46e5" stroke-width="2"/>
+        <polyline points="9,14 12,17 19,11" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        <circle cx="46" cy="14" r="12" fill="#8b5cf6"/>
+        <circle cx="78" cy="14" r="12" fill="#ec4899"/>
+        <circle cx="110" cy="14" r="12" fill="#14b8a6"/>
+        <circle cx="142" cy="14" r="12" fill="#f59e0b"/>
+      </g>
+    </g>
+
+    <!-- Border radius -->
+    <g transform="translate(0, 108)">
+      <text x="0" y="14" font-family="Inter, system-ui, sans-serif" font-size="12" font-weight="500" fill="#334155">Border Radius</text>
+      <g transform="translate(200, 0)">
+        <rect x="0" y="4" width="148" height="6" rx="3" fill="#e2e8f0"/>
+        <rect x="0" y="4" width="88" height="6" rx="3" fill="#6366f1"/>
+        <circle cx="88" cy="7" r="8" fill="#6366f1" stroke="white" stroke-width="2"/>
+        <text x="116" y="12" font-family="Inter, system-ui, sans-serif" font-size="10" fill="#64748b">8px</text>
+      </g>
+    </g>
+  </g>
+
+  <!-- Divider -->
+  <line x1="916" y1="314" x2="1264" y2="314" stroke="#e2e8f0" stroke-width="1"/>
+
+  <!-- Section: Typography -->
+  <g transform="translate(916, 334)">
+    <text x="0" y="0" font-family="Inter, system-ui, sans-serif" font-size="13" font-weight="700" fill="#0f172a">Typography</text>
+
+    <!-- UI Font -->
+    <g transform="translate(0, 24)">
+      <text x="0" y="14" font-family="Inter, system-ui, sans-serif" font-size="12" font-weight="500" fill="#334155">UI Font</text>
+      <rect x="200" y="-2" width="148" height="32" rx="6" fill="#ffffff" stroke="#e2e8f0" stroke-width="1"/>
+      <text x="212" y="18" font-family="Inter, system-ui, sans-serif" font-size="12" fill="#0f172a">Inter</text>
+      <polyline points="330,12 336,18 342,12" fill="none" stroke="#94a3b8" stroke-width="1.5" stroke-linecap="round"/>
+    </g>
+
+    <!-- Mono Font -->
+    <g transform="translate(0, 68)">
+      <text x="0" y="14" font-family="Inter, system-ui, sans-serif" font-size="12" font-weight="500" fill="#334155">Mono Font</text>
+      <rect x="200" y="-2" width="148" height="32" rx="6" fill="#ffffff" stroke="#e2e8f0" stroke-width="1"/>
+      <text x="212" y="18" font-family="JetBrains Mono, monospace" font-size="11" fill="#0f172a">JetBrains Mono</text>
+      <polyline points="330,12 336,18 342,12" fill="none" stroke="#94a3b8" stroke-width="1.5" stroke-linecap="round"/>
+    </g>
+
+    <!-- Font size -->
+    <g transform="translate(0, 112)">
+      <text x="0" y="14" font-family="Inter, system-ui, sans-serif" font-size="12" font-weight="500" fill="#334155">Font Size</text>
+      <g transform="translate(200, 0)">
+        <rect x="0" y="0" width="148" height="28" rx="6" fill="#e2e8f0"/>
+        <rect x="2" y="2" width="36" height="24" rx="4" fill="#ffffff"/>
+        <text x="20" y="18" text-anchor="middle" font-family="Inter, system-ui, sans-serif" font-size="10" font-weight="500" fill="#64748b">S</text>
+        <rect x="40" y="2" width="36" height="24" rx="4" fill="#6366f1"/>
+        <text x="58" y="18" text-anchor="middle" font-family="Inter, system-ui, sans-serif" font-size="10" font-weight="600" fill="white">M</text>
+        <rect x="78" y="2" width="36" height="24" rx="4" fill="#ffffff"/>
+        <text x="96" y="18" text-anchor="middle" font-family="Inter, system-ui, sans-serif" font-size="10" font-weight="500" fill="#64748b">L</text>
+        <rect x="116" y="2" width="30" height="24" rx="4" fill="#ffffff"/>
+        <text x="131" y="18" text-anchor="middle" font-family="Inter, system-ui, sans-serif" font-size="10" font-weight="500" fill="#64748b">XL</text>
+      </g>
+    </g>
+  </g>
+
+  <!-- Divider -->
+  <line x1="916" y1="470" x2="1264" y2="470" stroke="#e2e8f0" stroke-width="1"/>
+
+  <!-- Section: Storage -->
+  <g transform="translate(916, 490)">
+    <text x="0" y="0" font-family="Inter, system-ui, sans-serif" font-size="13" font-weight="700" fill="#0f172a">Storage</text>
+
+    <!-- Storage usage bar -->
+    <g transform="translate(0, 24)">
+      <text x="0" y="14" font-family="Inter, system-ui, sans-serif" font-size="12" font-weight="500" fill="#334155">IndexedDB Usage</text>
+      <g transform="translate(0, 24)">
+        <rect x="0" y="0" width="348" height="8" rx="4" fill="#e2e8f0"/>
+        <rect x="0" y="0" width="62" height="8" rx="4" fill="#6366f1"/>
+      </g>
+      <text x="0" y="52" font-family="Inter, system-ui, sans-serif" font-size="11" fill="#64748b">1.2 MB used of ~50 MB available</text>
+    </g>
+
+    <!-- Data management -->
+    <g transform="translate(0, 92)">
+      <rect x="0" y="0" width="166" height="36" rx="8" fill="#ffffff" stroke="#e2e8f0" stroke-width="1"/>
+      <text x="83" y="23" text-anchor="middle" font-family="Inter, system-ui, sans-serif" font-size="12" font-weight="500" fill="#334155">Export All Data</text>
+
+      <rect x="178" y="0" width="170" height="36" rx="8" fill="#ffffff" stroke="#e2e8f0" stroke-width="1"/>
+      <text x="263" y="23" text-anchor="middle" font-family="Inter, system-ui, sans-serif" font-size="12" font-weight="500" fill="#334155">Import Data</text>
+    </g>
+  </g>
+
+  <!-- Divider -->
+  <line x1="916" y1="614" x2="1264" y2="614" stroke="#e2e8f0" stroke-width="1"/>
+
+  <!-- Section: About -->
+  <g transform="translate(916, 634)">
+    <text x="0" y="0" font-family="Inter, system-ui, sans-serif" font-size="13" font-weight="700" fill="#0f172a">About</text>
+    <text x="0" y="28" font-family="Inter, system-ui, sans-serif" font-size="12" fill="#334155">MTP Workbench v0.1.0</text>
+    <text x="0" y="48" font-family="Inter, system-ui, sans-serif" font-size="11" fill="#64748b">Methodology Transfer Protocol workspace</text>
+    <text x="0" y="68" font-family="Inter, system-ui, sans-serif" font-size="11" fill="#64748b">100% local processing. No data leaves your browser.</text>
+
+    <g transform="translate(0, 84)">
+      <rect x="0" y="0" width="120" height="32" rx="6" fill="#ffffff" stroke="#e2e8f0" stroke-width="1"/>
+      <text x="60" y="21" text-anchor="middle" font-family="Inter, system-ui, sans-serif" font-size="11" font-weight="500" fill="#6366f1">View on GitHub</text>
+      <rect x="132" y="0" width="100" height="32" rx="6" fill="#ffffff" stroke="#e2e8f0" stroke-width="1"/>
+      <text x="182" y="21" text-anchor="middle" font-family="Inter, system-ui, sans-serif" font-size="11" font-weight="500" fill="#6366f1">MTP Spec</text>
+    </g>
+  </g>
+</svg>

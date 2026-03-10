@@ -2,7 +2,7 @@
 
 **Local methodology workspace between AI platforms.**
 
-MTP Workbench is a browser extension that helps you capture, organize, and transfer AI-developed methodologies across platforms. It is built on the [Methodology Transfer Protocol (MTP)](https://github.com/luborfedak/mtp-spec) open specification.
+MTP Workbench is a browser extension that helps you capture, organize, and transfer AI-developed methodologies across platforms. It is built on the [Methodology Transfer Protocol (MTP)](https://github.com/lubor-fedak/mtp-spec) open specification.
 
 This is not a prompt manager. It is a methodology workspace with execution tracking and drift measurement. You develop methodology in a capable commercial AI (Claude, ChatGPT Pro), transfer it to an enterprise AI that has access to real data (Copilot, Azure OpenAI), and MTP Workbench helps you manage that process and eventually quantify how much the methodology degraded in transit.
 
@@ -26,10 +26,19 @@ This is not a prompt manager. It is a methodology workspace with execution track
 
 ## Installation
 
+### Chrome Web Store (Recommended)
+
+1. Visit the [MTP Workbench page on Chrome Web Store](https://chromewebstore.google.com/) *(link will be updated after publication)*.
+2. Click **"Add to Chrome"**.
+3. Confirm the installation.
+4. The MTP Workbench icon appears in your extensions toolbar.
+
+No admin rights required. No registration. No account needed. Works on managed/corporate devices.
+
 ### From Source (Development)
 
 ```bash
-git clone https://github.com/luborfedak/mtp-workbench.git
+git clone https://github.com/lubor-fedak/mtp-workbench.git
 cd mtp-workbench
 npm install
 npm run dev
@@ -37,7 +46,7 @@ npm run dev
 
 This starts the WXT dev server with hot module replacement.
 
-### Loading in Chrome
+To load the development build manually:
 
 1. Open `chrome://extensions` in Chrome.
 2. Enable "Developer mode" (toggle in the top-right corner).
@@ -176,7 +185,7 @@ For full architectural details, see [ARCHITECTURE.md](ARCHITECTURE.md).
 
 MTP Workbench is the product layer over the Methodology Transfer Protocol. The protocol specification, JSON schemas, and CLI tools live in a separate repository:
 
-- **Spec repository:** [github.com/luborfedak/mtp-spec](https://github.com/luborfedak/mtp-spec)
+- **Spec repository:** [github.com/lubor-fedak/mtp-spec](https://github.com/lubor-fedak/mtp-spec)
 
 Users of MTP Workbench never interact with MTP directly. The extension handles all protocol details internally and presents methodologies as visual cards with steps, edge cases, and dead ends.
 

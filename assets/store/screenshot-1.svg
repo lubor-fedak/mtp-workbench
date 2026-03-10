@@ -1,0 +1,140 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="800" viewBox="0 0 1280 800">
+  <defs>
+    <linearGradient id="sidebar-bg" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#f8fafc"/>
+      <stop offset="100%" style="stop-color:#f1f5f9"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Browser chrome background -->
+  <rect width="1280" height="800" fill="#e2e8f0"/>
+
+  <!-- Browser toolbar -->
+  <rect x="0" y="0" width="1280" height="72" fill="#f1f5f9" stroke="#e2e8f0" stroke-width="1"/>
+  <circle cx="24" cy="36" r="7" fill="#ef4444" opacity="0.8"/>
+  <circle cx="44" cy="36" r="7" fill="#eab308" opacity="0.8"/>
+  <circle cx="64" cy="36" r="7" fill="#22c55e" opacity="0.8"/>
+
+  <!-- URL bar -->
+  <rect x="200" y="16" width="600" height="40" rx="20" fill="#e2e8f0"/>
+  <text x="500" y="41" text-anchor="middle" font-family="Inter, system-ui, sans-serif" font-size="13" fill="#64748b">claude.ai/chat/new</text>
+
+  <!-- Main page area (AI chat placeholder) -->
+  <rect x="0" y="72" width="900" height="728" fill="#ffffff"/>
+  <text x="450" y="400" text-anchor="middle" font-family="Inter, system-ui, sans-serif" font-size="24" font-weight="300" fill="#cbd5e1">AI Chat Interface</text>
+  <text x="450" y="430" text-anchor="middle" font-family="Inter, system-ui, sans-serif" font-size="13" fill="#94a3b8">Your conversation appears here</text>
+
+  <!-- Sidebar panel -->
+  <rect x="900" y="72" width="380" height="728" fill="url(#sidebar-bg)" stroke="#e2e8f0" stroke-width="1"/>
+
+  <!-- Sidebar header -->
+  <rect x="900" y="72" width="380" height="56" fill="#ffffff" stroke="#e2e8f0" stroke-width="1"/>
+  <g transform="translate(920, 88)">
+    <rect x="0" y="0" width="28" height="24" rx="4" fill="#6366f1" opacity="0.15"/>
+    <rect x="6" y="6" width="16" height="2" rx="1" fill="#6366f1"/>
+    <rect x="6" y="11" width="12" height="2" rx="1" fill="#6366f1"/>
+    <rect x="6" y="16" width="14" height="2" rx="1" fill="#6366f1"/>
+  </g>
+  <text x="958" y="105" font-family="Inter, system-ui, sans-serif" font-size="15" font-weight="700" fill="#0f172a">MTP Workbench</text>
+
+  <!-- Tab bar -->
+  <g transform="translate(900, 128)">
+    <rect x="0" y="0" width="380" height="40" fill="#ffffff"/>
+    <rect x="16" y="8" width="80" height="28" rx="6" fill="#6366f1"/>
+    <text x="56" y="27" text-anchor="middle" font-family="Inter, system-ui, sans-serif" font-size="11" font-weight="600" fill="white">Projects</text>
+    <text x="136" y="27" text-anchor="middle" font-family="Inter, system-ui, sans-serif" font-size="11" font-weight="500" fill="#64748b">Compose</text>
+    <text x="200" y="27" text-anchor="middle" font-family="Inter, system-ui, sans-serif" font-size="11" font-weight="500" fill="#64748b">Track</text>
+    <text x="264" y="27" text-anchor="middle" font-family="Inter, system-ui, sans-serif" font-size="11" font-weight="500" fill="#64748b">Settings</text>
+    <rect x="0" y="39" width="380" height="1" fill="#e2e8f0"/>
+  </g>
+
+  <!-- Search bar -->
+  <g transform="translate(916, 180)">
+    <rect x="0" y="0" width="348" height="36" rx="8" fill="#ffffff" stroke="#e2e8f0" stroke-width="1"/>
+    <text x="36" y="23" font-family="Inter, system-ui, sans-serif" font-size="12" fill="#94a3b8">Search projects...</text>
+    <!-- Search icon -->
+    <circle cx="18" cy="18" r="6" fill="none" stroke="#94a3b8" stroke-width="1.5"/>
+    <line x1="22" y1="22" x2="26" y2="26" stroke="#94a3b8" stroke-width="1.5"/>
+  </g>
+
+  <!-- New Project button -->
+  <g transform="translate(916, 228)">
+    <rect x="0" y="0" width="348" height="36" rx="8" fill="#6366f1"/>
+    <text x="174" y="23" text-anchor="middle" font-family="Inter, system-ui, sans-serif" font-size="12" font-weight="600" fill="white">+ New Project</text>
+  </g>
+
+  <!-- Project Card 1 -->
+  <g transform="translate(916, 280)">
+    <rect x="0" y="0" width="348" height="120" rx="10" fill="#ffffff" stroke="#e2e8f0" stroke-width="1"/>
+    <rect x="0" y="0" width="4" height="120" rx="2" fill="#6366f1"/>
+
+    <!-- Project icon -->
+    <rect x="16" y="16" width="32" height="32" rx="8" fill="#eef2ff"/>
+    <text x="32" y="38" text-anchor="middle" font-family="Inter, system-ui, sans-serif" font-size="16" fill="#6366f1">C</text>
+
+    <text x="60" y="32" font-family="Inter, system-ui, sans-serif" font-size="14" font-weight="600" fill="#0f172a">Churn Risk Scoring</text>
+    <text x="60" y="48" font-family="Inter, system-ui, sans-serif" font-size="11" fill="#64748b">Customer retention analysis pipeline</text>
+
+    <!-- Tags -->
+    <rect x="16" y="64" width="72" height="22" rx="11" fill="#eef2ff" stroke="#c7d2fe" stroke-width="1"/>
+    <text x="52" y="79" text-anchor="middle" font-family="Inter, system-ui, sans-serif" font-size="10" font-weight="500" fill="#6366f1">analytics</text>
+    <rect x="96" y="64" width="48" height="22" rx="11" fill="#fef3c7" stroke="#fde68a" stroke-width="1"/>
+    <text x="120" y="79" text-anchor="middle" font-family="Inter, system-ui, sans-serif" font-size="10" font-weight="500" fill="#d97706">ML</text>
+    <rect x="152" y="64" width="64" height="22" rx="11" fill="#dcfce7" stroke="#bbf7d0" stroke-width="1"/>
+    <text x="184" y="79" text-anchor="middle" font-family="Inter, system-ui, sans-serif" font-size="10" font-weight="500" fill="#16a34a">Python</text>
+
+    <!-- Meta -->
+    <text x="16" y="104" font-family="Inter, system-ui, sans-serif" font-size="10" fill="#94a3b8">3 packages  ·  Updated 2h ago</text>
+    <rect x="280" y="88" width="52" height="22" rx="11" fill="#eef2ff"/>
+    <text x="306" y="103" text-anchor="middle" font-family="Inter, system-ui, sans-serif" font-size="10" font-weight="500" fill="#6366f1">Active</text>
+  </g>
+
+  <!-- Project Card 2 -->
+  <g transform="translate(916, 412)">
+    <rect x="0" y="0" width="348" height="120" rx="10" fill="#ffffff" stroke="#e2e8f0" stroke-width="1"/>
+    <rect x="0" y="0" width="4" height="120" rx="2" fill="#22c55e"/>
+
+    <rect x="16" y="16" width="32" height="32" rx="8" fill="#f0fdf4"/>
+    <text x="32" y="38" text-anchor="middle" font-family="Inter, system-ui, sans-serif" font-size="16" fill="#22c55e">R</text>
+
+    <text x="60" y="32" font-family="Inter, system-ui, sans-serif" font-size="14" font-weight="600" fill="#0f172a">Code Review Workflow</text>
+    <text x="60" y="48" font-family="Inter, system-ui, sans-serif" font-size="11" fill="#64748b">Automated PR review methodology</text>
+
+    <rect x="16" y="64" width="44" height="22" rx="11" fill="#eef2ff" stroke="#c7d2fe" stroke-width="1"/>
+    <text x="38" y="79" text-anchor="middle" font-family="Inter, system-ui, sans-serif" font-size="10" font-weight="500" fill="#6366f1">dev</text>
+    <rect x="68" y="64" width="68" height="22" rx="11" fill="#fce7f3" stroke="#fbcfe8" stroke-width="1"/>
+    <text x="102" y="79" text-anchor="middle" font-family="Inter, system-ui, sans-serif" font-size="10" font-weight="500" fill="#db2777">workflow</text>
+
+    <text x="16" y="104" font-family="Inter, system-ui, sans-serif" font-size="10" fill="#94a3b8">5 packages  ·  Updated 1d ago</text>
+    <rect x="280" y="88" width="52" height="22" rx="11" fill="#f0fdf4"/>
+    <text x="306" y="103" text-anchor="middle" font-family="Inter, system-ui, sans-serif" font-size="10" font-weight="500" fill="#22c55e">Stable</text>
+  </g>
+
+  <!-- Project Card 3 -->
+  <g transform="translate(916, 544)">
+    <rect x="0" y="0" width="348" height="120" rx="10" fill="#ffffff" stroke="#e2e8f0" stroke-width="1"/>
+    <rect x="0" y="0" width="4" height="120" rx="2" fill="#f59e0b"/>
+
+    <rect x="16" y="16" width="32" height="32" rx="8" fill="#fffbeb"/>
+    <text x="32" y="38" text-anchor="middle" font-family="Inter, system-ui, sans-serif" font-size="16" fill="#f59e0b">D</text>
+
+    <text x="60" y="32" font-family="Inter, system-ui, sans-serif" font-size="14" font-weight="600" fill="#0f172a">Data Pipeline Setup</text>
+    <text x="60" y="48" font-family="Inter, system-ui, sans-serif" font-size="11" fill="#64748b">ETL configuration and monitoring</text>
+
+    <rect x="16" y="64" width="76" height="22" rx="11" fill="#eef2ff" stroke="#c7d2fe" stroke-width="1"/>
+    <text x="54" y="79" text-anchor="middle" font-family="Inter, system-ui, sans-serif" font-size="10" font-weight="500" fill="#6366f1">data-eng</text>
+    <rect x="100" y="64" width="48" height="22" rx="11" fill="#fef3c7" stroke="#fde68a" stroke-width="1"/>
+    <text x="124" y="79" text-anchor="middle" font-family="Inter, system-ui, sans-serif" font-size="10" font-weight="500" fill="#d97706">ETL</text>
+
+    <text x="16" y="104" font-family="Inter, system-ui, sans-serif" font-size="10" fill="#94a3b8">2 packages  ·  Updated 3d ago</text>
+    <rect x="280" y="88" width="52" height="22" rx="11" fill="#fffbeb"/>
+    <text x="306" y="103" text-anchor="middle" font-family="Inter, system-ui, sans-serif" font-size="10" font-weight="500" fill="#f59e0b">Draft</text>
+  </g>
+
+  <!-- Status bar -->
+  <g transform="translate(916, 688)">
+    <rect x="0" y="0" width="348" height="32" rx="6" fill="#ffffff" stroke="#e2e8f0" stroke-width="1"/>
+    <circle cx="16" cy="16" r="4" fill="#22c55e"/>
+    <text x="28" y="20" font-family="Inter, system-ui, sans-serif" font-size="10" fill="#64748b">3 projects  ·  10 packages  ·  All local</text>
+  </g>
+</svg>
