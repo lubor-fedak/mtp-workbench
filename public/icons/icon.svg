@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" width="128" height="128">
+  <!-- Diamond shape background -->
+  <path d="M64 8 L120 64 L64 120 L8 64 Z" fill="#6366f1" />
+  <!-- Letter M -->
+  <path d="M40 88 L40 44 L52 44 L64 62 L76 44 L88 44 L88 88 L76 88 L76 60 L64 78 L52 60 L52 88 Z" fill="white" />
+</svg>

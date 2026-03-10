@@ -1,0 +1,125 @@
+// ============================================================
+// IndexedDB Storage Layer — Dexie.js
+// ============================================================
+
+import Dexie, { type EntityTable } from 'dexie';
+import type {
+  ContextSnippet,
+  ExecutionRecord,
+  GlobalTheme,
+  MethodologyPackage,
+  Project,
+} from '../shared/types';
+import { DEFAULT_THEME } from '../shared/theme';
+
+const DB_NAME = 'mtp-workbench';
+
+class MtpDatabase extends Dexie {
+  projects!: EntityTable<Project, 'id'>;
+  snippets!: EntityTable<ContextSnippet, 'id'>;
+  packages!: EntityTable<MethodologyPackage, 'id'>;
+  records!: EntityTable<ExecutionRecord, 'id'>;
+
+  constructor() {
+    super(DB_NAME);
+
+    this.version(1).stores({
+      projects: 'id, name, sort_order, created_at, updated_at',
+      snippets: 'id, project_id, title, source_platform, created_at',
+      packages: 'id, project_id, display_name, source_platform, created_at',
+      records: 'id, project_id, package_id, target_platform, executed_at',
+    });
+  }
+}
+
+export const db = new MtpDatabase();
+
+// ---- Theme Storage (chrome.storage.local for sync across contexts) ----
+
+const THEME_KEY = 'mtp_theme';
+
+export async function getTheme(): Promise<GlobalTheme> {
+  const result = await chrome.storage.local.get(THEME_KEY);
+  return result[THEME_KEY] ?? { ...DEFAULT_THEME };
+}
+
+export async function setTheme(theme: GlobalTheme): Promise<void> {
+  await chrome.storage.local.set({ [THEME_KEY]: theme });
+}
+
+// ---- Projects ----
+
+export async function getProjects(): Promise<Project[]> {
+  return db.projects.orderBy('sort_order').toArray();
+}
+
+export async function createProject(project: Project): Promise<Project> {
+  await db.projects.add(project);
+  return project;
+}
+
+export async function updateProject(
+  id: string,
+  updates: Partial<Project>,
+): Promise<Project | undefined> {
+  await db.projects.update(id, { ...updates, updated_at: new Date().toISOString() });
+  return db.projects.get(id);
+}
+
+export async function deleteProject(id: string): Promise<void> {
+  await db.transaction('rw', [db.projects, db.snippets, db.packages, db.records], async () => {
+    await db.snippets.where('project_id').equals(id).delete();
+    await db.packages.where('project_id').equals(id).delete();
+    await db.records.where('project_id').equals(id).delete();
+    await db.projects.delete(id);
+  });
+}
+
+// ---- Snippets ----
+
+export async function getSnippets(projectId: string): Promise<ContextSnippet[]> {
+  return db.snippets.where('project_id').equals(projectId).sortBy('created_at');
+}
+
+export async function createSnippet(snippet: ContextSnippet): Promise<ContextSnippet> {
+  await db.snippets.add(snippet);
+  return snippet;
+}
+
+export async function updateSnippet(
+  id: string,
+  updates: Partial<ContextSnippet>,
+): Promise<ContextSnippet | undefined> {
+  await db.snippets.update(id, updates);
+  return db.snippets.get(id);
+}
+
+export async function deleteSnippet(id: string): Promise<void> {
+  await db.snippets.delete(id);
+}
+
+// ---- Packages ----
+
+export async function getPackages(projectId: string): Promise<MethodologyPackage[]> {
+  return db.packages.where('project_id').equals(projectId).sortBy('created_at');
+}
+
+export async function createPackage(pkg: MethodologyPackage): Promise<MethodologyPackage> {
+  await db.packages.add(pkg);
+  return pkg;
+}
+
+export async function deletePackage(id: string): Promise<void> {
+  await db.packages.delete(id);
+}
+
+// ---- Execution Records ----
+
+export async function getRecords(projectId: string): Promise<ExecutionRecord[]> {
+  return db.records.where('project_id').equals(projectId).sortBy('executed_at');
+}
+
+export async function createRecord(record: ExecutionRecord): Promise<ExecutionRecord> {
+  await db.records.add(record);
+  return record;
+}
