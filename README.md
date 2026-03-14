@@ -10,8 +10,9 @@ This is not a prompt manager. It is a methodology workspace with execution track
 
 ## Key Features (Phase 1)
 
-- **Capture** -- Select text on any supported AI platform, right-click, and save it to your local workspace.
-- **Organize** -- Create projects with icons, colors, descriptions, and tags. Store context snippets and methodology packages inside projects.
+- **Capture Text** -- Select text on any supported AI platform, right-click, and save it to your local workspace.
+- **Capture Code Blocks** -- Right-click on any AI platform page and choose "Capture Code Blocks (MTP)" to automatically extract all code blocks with their language and filename metadata. Select which blocks to save using the multi-select UI.
+- **Organize** -- Create projects with icons, colors, descriptions, and tags. Store context snippets (text and code) and methodology packages inside projects.
 - **Compose** -- Select context snippets and packages, choose a target platform, preview the composed prompt, and copy it to clipboard.
 - **Customize** -- Light/dark/system theme, accent color, four bundled fonts, three density levels, adjustable sidebar width.
 - **Privacy-first** -- Everything stays in your browser. No backend, no registration, no cloud sync, no external requests.
@@ -102,17 +103,30 @@ Each project acts as a folder that holds context snippets, methodology packages,
 
 1. Navigate to a supported AI platform (Claude, ChatGPT, Gemini, or Copilot).
 2. Select the text you want to capture.
-3. Right-click and choose "Save to MTP Workbench".
+3. Right-click and choose **"Save to MTP Workbench"**.
 4. The sidebar opens with the Capture view, where you can review the captured text.
 5. Assign the snippet to a project, give it a title, and save.
 
 The captured text is stored locally in IndexedDB along with the source platform and URL.
 
+### Capturing Code Blocks from AI Platforms
+
+When an AI generates code (e.g., a `.jsx` component, a `.yaml` config, a `.md` document), you can capture all code blocks from the page at once:
+
+1. Navigate to a supported AI platform with a conversation that contains code output.
+2. Right-click anywhere on the page and choose **"Capture Code Blocks (MTP)"**.
+3. The sidebar opens with all detected code blocks listed as selectable cards, each showing the filename or language and a code preview.
+4. Use the checkboxes to select which blocks to save (all are selected by default).
+5. Assign to a project and click **"Save"**.
+
+Each code snippet is stored with its language (e.g., `typescript`, `python`, `yaml`) and filename (e.g., `App.tsx`, `config.yaml`) when available. Code snippets are displayed in the project detail view with monospace formatting and language badges.
+
 ### Organizing Snippets and Packages
 
 Inside a project, you can view and manage:
 
-- **Context Snippets** -- Short excerpts such as rules, definitions, or decisions captured from AI conversations.
+- **Context Snippets (text)** -- Short excerpts such as rules, definitions, or decisions captured from AI conversations.
+- **Context Snippets (code)** -- Code blocks captured from AI output, displayed with syntax metadata (language, filename) and monospace preview.
 - **Methodology Packages** -- Extracted MTP packages displayed as visual cards with step counts and summaries (the underlying YAML/JSON is hidden from the UI).
 
 ### Composing Prompts
@@ -163,7 +177,7 @@ Sidebar    Content Scripts
 
 - **Background service worker** -- Message routing, IndexedDB operations via Dexie.js, MTP core logic.
 - **Sidebar (Side Panel)** -- Main UI built with Svelte 5. Contains views for Projects, Project Detail, Compose, Capture, Drift Dashboard, and Settings.
-- **Content scripts** -- Thin, per-platform scripts for DOM interaction on supported AI platforms. Logic stays in the service worker.
+- **Content scripts** -- Thin, per-platform scripts for DOM interaction on supported AI platforms. Handle text selection capture, code block extraction (parsing `<pre><code>` elements with language detection from CSS classes and `data-language` attributes), and prompt injection. Logic stays in the service worker.
 - **Popup** -- Quick-action entry point.
 
 For full architectural details, see [ARCHITECTURE.md](ARCHITECTURE.md).
