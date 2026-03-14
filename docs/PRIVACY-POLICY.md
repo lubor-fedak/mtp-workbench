@@ -1,6 +1,6 @@
 # Privacy Policy — MTP Workbench
 
-**Last updated:** March 10, 2026
+**Last updated:** March 15, 2026
 
 MTP Workbench is a browser extension that provides a local methodology workspace for working with AI platforms. It is developed by Lubor Fedak and published as open-source software under the Apache 2.0 license.
 
@@ -52,12 +52,13 @@ MTP Workbench uses content scripts that operate on the following AI platform web
 - gemini.google.com
 - copilot.microsoft.com
 
-These content scripts enable two functions:
+These content scripts enable three functions:
 
-1. **Text selection capture** — allows you to select text on these sites and save it to your local workspace
-2. **Prompt injection** — allows you to insert methodology prompts into the platform's input fields
+1. **Text selection capture** — allows you to select text on these sites and save it to your local workspace via right-click context menu
+2. **Code block detection** — identifies code blocks (`<pre><code>` elements) on the page, detects their programming language and filename, and displays a count badge on the extension icon. You can then choose which code blocks to save to your local workspace
+3. **Prompt injection** — allows you to insert methodology prompts into the platform's input fields
 
-Content scripts perform DOM interaction only. They do not read, extract, or transmit page content beyond what you explicitly select. All captured data is stored locally on your device and is never sent elsewhere.
+Content scripts perform DOM interaction only. They do not read, extract, or transmit page content beyond what you explicitly select or capture. All captured data is stored locally on your device and is never sent elsewhere.
 
 ## Data Sharing
 
