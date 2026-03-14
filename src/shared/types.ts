@@ -108,6 +108,23 @@ export interface DriftComponents {
   dead_end_avoidance: number;
 }
 
+// --- Export / Import ---
+
+export interface ProjectExport {
+  mtp_workbench_version: string;
+  exported_at: string;
+  project: Project;
+  snippets: ContextSnippet[];
+  packages: MethodologyPackage[];
+  records: ExecutionRecord[];
+}
+
+export interface BulkExport {
+  mtp_workbench_version: string;
+  exported_at: string;
+  projects: ProjectExport[];
+}
+
 // --- Messaging ---
 
 export type MessageType =
@@ -126,6 +143,9 @@ export type MessageType =
   | 'CREATE_RECORD'
   | 'GET_THEME'
   | 'SET_THEME'
+  | 'EXPORT_PROJECT'
+  | 'EXPORT_ALL_PROJECTS'
+  | 'IMPORT_PROJECT'
   | 'CAPTURE_SELECTION'
   | 'CAPTURED_TEXT'
   | 'CAPTURED_CODE_BLOCK'

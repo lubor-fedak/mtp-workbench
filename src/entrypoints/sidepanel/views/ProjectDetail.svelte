@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { ArrowLeft, Save, Plus, Wand2 } from 'lucide-svelte';
+  import { ArrowLeft, Save, Plus, Wand2, Download } from 'lucide-svelte';
   import { v4 as uuidv4 } from 'uuid';
   import type {
     Project,
@@ -174,6 +174,7 @@
       project_id: projectId,
       title: snippetTitle,
       content: snippetContent,
+      content_type: 'text',
       source_platform: snippetPlatform,
       tags: [],
       created_at: new Date().toISOString(),
@@ -199,6 +200,26 @@
       (response: MessageResponse) => {
         if (response?.success) {
           snippets = snippets.filter((s) => s.id !== snippetId);
+        }
+      },
+    );
+  }
+
+  function handleExportProject() {
+    if (!projectId) return;
+    chrome.runtime.sendMessage(
+      { type: 'EXPORT_PROJECT', payload: { id: projectId } },
+      (response: MessageResponse) => {
+        if (response?.success && response.data) {
+          const json = JSON.stringify(response.data, null, 2);
+          const blob = new Blob([json], { type: 'application/json' });
+          const url = URL.createObjectURL(blob);
+          const a = document.createElement('a');
+          const safeName = (name || 'project').replace(/[^a-z0-9_-]/gi, '_').toLowerCase();
+          a.href = url;
+          a.download = `${safeName}.mtp.json`;
+          a.click();
+          URL.revokeObjectURL(url);
         }
       },
     );
@@ -240,6 +261,9 @@
     {/if}
     <div class="header-actions">
       {#if !isCreateMode && projectId}
+        <button class="btn-secondary" onclick={handleExportProject} title="Export project">
+          <Download size={14} />
+        </button>
         <button class="btn-secondary" onclick={() => onCompose(projectId!)}>
           <Wand2 size={14} />
           Compose

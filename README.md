@@ -14,6 +14,7 @@ This is not a prompt manager. It is a methodology workspace with execution track
 - **Capture Code Blocks** -- Right-click on any AI platform page and choose "Capture Code Blocks (MTP)" to automatically extract all code blocks with their language and filename metadata. Select which blocks to save using the multi-select UI.
 - **Organize** -- Create projects with icons, colors, descriptions, and tags. Store context snippets (text and code) and methodology packages inside projects.
 - **Compose** -- Select context snippets and packages, choose a target platform, preview the composed prompt, and copy it to clipboard.
+- **Export & Import** -- Export a single project or all projects as `.mtp.json` files. Import them back to restore a backup or share methodologies with colleagues. Exported files include all snippets, packages, and execution records.
 - **Customize** -- Light/dark/system theme, accent color, four bundled fonts, three density levels, adjustable sidebar width.
 - **Privacy-first** -- Everything stays in your browser. No backend, no registration, no cloud sync, no external requests.
 
@@ -120,6 +121,25 @@ When an AI generates code (e.g., a `.jsx` component, a `.yaml` config, a `.md` d
 5. Assign to a project and click **"Save"**.
 
 Each code snippet is stored with its language (e.g., `typescript`, `python`, `yaml`) and filename (e.g., `App.tsx`, `config.yaml`) when available. Code snippets are displayed in the project detail view with monospace formatting and language badges.
+
+### Exporting and Importing Projects
+
+**Export a single project:**
+
+1. Open a project in the Project Detail view.
+2. Click the download icon in the header toolbar.
+3. A `.mtp.json` file is saved to your Downloads folder containing the project, all its snippets, packages, and execution records.
+
+**Export all projects (backup):**
+
+1. On the Projects view, click the download icon next to the Import button.
+2. A timestamped backup file (e.g., `mtp-workbench-backup-2026-03-15.mtp.json`) is downloaded.
+
+**Import a project or backup:**
+
+1. On the Projects view, click the upload icon.
+2. Select a `.mtp.json` file (single project export or bulk backup).
+3. The project(s) are imported with new IDs to avoid collisions with existing data.
 
 ### Organizing Snippets and Packages
 

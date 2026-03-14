@@ -2,7 +2,7 @@
 // Background Service Worker — Message Router
 // ============================================================
 
-import type { Message, MessageResponse } from '../shared/types';
+import type { Message, MessageResponse, ProjectExport, BulkExport } from '../shared/types';
 import {
   createPackage,
   createProject,
@@ -20,6 +20,12 @@ import {
   updateProject,
   updateSnippet,
 } from '../lib/storage';
+import {
+  exportProject,
+  exportAllProjects,
+  importProject,
+  importBulkExport,
+} from '../lib/export';
 
 export default defineBackground(() => {
   // Context menu for capturing text selections
@@ -144,6 +150,22 @@ async function handleMessage(message: Message): Promise<MessageResponse> {
     case 'SET_THEME':
       await setTheme(payload as any);
       return { success: true };
+
+    // Export / Import
+    case 'EXPORT_PROJECT':
+      return { success: true, data: await exportProject((payload as any).id) };
+    case 'EXPORT_ALL_PROJECTS':
+      return { success: true, data: await exportAllProjects() };
+    case 'IMPORT_PROJECT': {
+      const importData = payload as ProjectExport | BulkExport;
+      if ('projects' in importData) {
+        const imported = await importBulkExport(importData);
+        return { success: true, data: imported };
+      } else {
+        const imported = await importProject(importData);
+        return { success: true, data: imported };
+      }
+    }
 
     default:
       return { success: false, error: `Unknown message type: ${type}` };

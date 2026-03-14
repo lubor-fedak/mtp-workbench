@@ -1,6 +1,6 @@
 <script lang="ts">
-  import { Plus } from 'lucide-svelte';
-  import type { Project, MessageResponse } from '../../../shared/types';
+  import { Plus, Download, Upload } from 'lucide-svelte';
+  import type { Project, MessageResponse, ProjectExport, BulkExport } from '../../../shared/types';
 
   interface Props {
     onSelect: (id: string) => void;
@@ -30,20 +30,95 @@
     });
   }
 
+  let importing: boolean = $state(false);
+  let fileInput: HTMLInputElement;
+
   function truncate(text: string | undefined, maxLength: number): string {
     if (!text) return '';
     if (text.length <= maxLength) return text;
     return text.slice(0, maxLength) + '...';
   }
+
+  function handleExportAll() {
+    chrome.runtime.sendMessage(
+      { type: 'EXPORT_ALL_PROJECTS' },
+      (response: MessageResponse<BulkExport>) => {
+        if (response?.success && response.data) {
+          const json = JSON.stringify(response.data, null, 2);
+          const blob = new Blob([json], { type: 'application/json' });
+          const url = URL.createObjectURL(blob);
+          const a = document.createElement('a');
+          a.href = url;
+          a.download = `mtp-workbench-backup-${new Date().toISOString().slice(0, 10)}.mtp.json`;
+          a.click();
+          URL.revokeObjectURL(url);
+        }
+      },
+    );
+  }
+
+  function handleImportClick() {
+    fileInput?.click();
+  }
+
+  function handleFileSelected(event: Event) {
+    const input = event.target as HTMLInputElement;
+    const file = input.files?.[0];
+    if (!file) return;
+
+    importing = true;
+    const reader = new FileReader();
+    reader.onload = () => {
+      try {
+        const data = JSON.parse(reader.result as string);
+        chrome.runtime.sendMessage(
+          { type: 'IMPORT_PROJECT', payload: data },
+          (response: MessageResponse) => {
+            importing = false;
+            if (response?.success) {
+              loadProjects();
+            } else {
+              error = response?.error ?? 'Import failed';
+            }
+            // Reset file input so same file can be re-imported
+            input.value = '';
+          },
+        );
+      } catch {
+        importing = false;
+        error = 'Invalid JSON file';
+        input.value = '';
+      }
+    };
+    reader.readAsText(file);
+  }
 </script>
 
 <div class="projects-view">
+  <input
+    type="file"
+    accept=".json,.mtp.json"
+    style="display:none"
+    bind:this={fileInput}
+    onchange={handleFileSelected}
+  />
+
   <div class="projects-header">
     <h2 class="projects-title">Projects</h2>
-    <button class="btn-primary" onclick={onCreate}>
-      <Plus size={16} />
-      New Project
-    </button>
+    <div class="header-actions">
+      {#if projects.length > 0}
+        <button class="btn-icon" onclick={handleExportAll} title="Export all projects">
+          <Download size={16} />
+        </button>
+      {/if}
+      <button class="btn-icon" onclick={handleImportClick} title="Import project" disabled={importing}>
+        <Upload size={16} />
+      </button>
+      <button class="btn-primary" onclick={onCreate}>
+        <Plus size={16} />
+        New Project
+      </button>
+    </div>
   </div>
 
   {#if loading}
@@ -118,6 +193,35 @@
     font-weight: 700;
     color: var(--mtp-text);
     margin: 0;
+  }
+
+  .header-actions {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+
+  .btn-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    border: 1px solid var(--mtp-border);
+    border-radius: var(--mtp-radius);
+    background: var(--mtp-surface);
+    color: var(--mtp-text);
+    cursor: pointer;
+    flex-shrink: 0;
+  }
+
+  .btn-icon:hover {
+    background: var(--mtp-surface-hover);
+  }
+
+  .btn-icon:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
   }
 
   .btn-primary {
