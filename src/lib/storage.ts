@@ -29,6 +29,20 @@ class MtpDatabase extends Dexie {
       packages: 'id, project_id, display_name, source_platform, created_at',
       records: 'id, project_id, package_id, target_platform, executed_at',
     });
+
+    this.version(2).stores({
+      projects: 'id, name, sort_order, created_at, updated_at',
+      snippets: 'id, project_id, title, content_type, source_platform, created_at',
+      packages: 'id, project_id, display_name, source_platform, created_at',
+      records: 'id, project_id, package_id, target_platform, executed_at',
+    }).upgrade((tx) => {
+      // Migrate existing snippets to have content_type = 'text'
+      return tx.table('snippets').toCollection().modify((snippet) => {
+        if (!snippet.content_type) {
+          snippet.content_type = 'text';
+        }
+      });
+    });
   }
 }
 

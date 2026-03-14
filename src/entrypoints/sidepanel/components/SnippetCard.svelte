@@ -33,12 +33,28 @@
     </div>
   </div>
 
-  <p class="snippet-content">{snippet.content}</p>
+  {#if snippet.content_type === 'code'}
+    <div class="snippet-code-header">
+      {#if snippet.filename}
+        <span class="snippet-filename">{snippet.filename}</span>
+      {/if}
+      {#if snippet.language}
+        <span class="snippet-lang">{snippet.language}</span>
+      {/if}
+    </div>
+    <pre class="snippet-code"><code>{snippet.content}</code></pre>
+  {:else}
+    <p class="snippet-content">{snippet.content}</p>
+  {/if}
 
   <div class="snippet-meta">
     <span class="platform-badge" data-platform={snippet.source_platform}>
       {getPlatformName(snippet.source_platform)}
     </span>
+
+    {#if snippet.content_type === 'code'}
+      <span class="badge badge-code">code</span>
+    {/if}
 
     {#each snippet.tags as tag}
       <span class="badge">{tag}</span>
@@ -148,5 +164,57 @@
     font-size: 11px;
     color: var(--mtp-text-tertiary);
     margin-left: auto;
+  }
+
+  .snippet-code-header {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+
+  .snippet-filename {
+    font-size: 12px;
+    font-weight: 600;
+    font-family: var(--mtp-font-mono, 'JetBrains Mono', monospace);
+    color: var(--mtp-text);
+  }
+
+  .snippet-lang {
+    font-size: 10px;
+    font-weight: 600;
+    text-transform: uppercase;
+    padding: 1px 6px;
+    border-radius: 4px;
+    background: var(--mtp-bg);
+    color: var(--mtp-accent);
+    letter-spacing: 0.3px;
+  }
+
+  .snippet-code {
+    margin: 0;
+    padding: 8px;
+    border-radius: var(--mtp-radius);
+    background: var(--mtp-bg);
+    border: 1px solid var(--mtp-border);
+    overflow-x: auto;
+    max-height: 80px;
+  }
+
+  .snippet-code code {
+    font-size: 11px;
+    font-family: var(--mtp-font-mono, 'JetBrains Mono', monospace);
+    color: var(--mtp-text-secondary);
+    line-height: 1.4;
+    white-space: pre;
+  }
+
+  .badge-code {
+    background: rgba(139, 92, 246, 0.15);
+    color: #8b5cf6;
+  }
+
+  :global([data-theme='dark']) .badge-code {
+    background: rgba(139, 92, 246, 0.2);
+    color: #a78bfa;
   }
 </style>

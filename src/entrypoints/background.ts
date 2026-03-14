@@ -29,6 +29,13 @@ export default defineBackground(() => {
     contexts: ['selection'],
   });
 
+  // Context menu for capturing all code blocks on the page
+  chrome.contextMenus.create({
+    id: 'mtp-capture-code-blocks',
+    title: 'Capture Code Blocks (MTP)',
+    contexts: ['page'],
+  });
+
   chrome.contextMenus.onClicked.addListener((info, tab) => {
     if (info.menuItemId === 'mtp-capture-selection' && info.selectionText && tab?.id) {
       chrome.sidePanel.open({ tabId: tab.id });
@@ -41,6 +48,24 @@ export default defineBackground(() => {
           url: info.pageUrl,
           tabId: tab.id,
         },
+      });
+    }
+
+    if (info.menuItemId === 'mtp-capture-code-blocks' && tab?.id) {
+      // Ask content script to extract code blocks
+      chrome.tabs.sendMessage(tab.id, { type: 'EXTRACT_CODE_BLOCKS' }, (response) => {
+        if (response?.success && response.data?.length > 0) {
+          chrome.sidePanel.open({ tabId: tab!.id! });
+
+          chrome.runtime.sendMessage({
+            type: 'CAPTURED_CODE_BLOCK',
+            payload: {
+              blocks: response.data,
+              url: info.pageUrl,
+              tabId: tab!.id,
+            },
+          });
+        }
       });
     }
   });

@@ -3,7 +3,7 @@
 // ============================================================
 
 import { PLATFORM_CONFIGS } from '../shared/platforms';
-import { extractConversation, getSelectionText, injectText } from '../lib/common';
+import { extractCodeBlocks, extractConversation, getSelectionText, injectText } from '../lib/common';
 
 const config = PLATFORM_CONFIGS.chatgpt;
 
@@ -31,6 +31,11 @@ export default defineContentScript({
         case 'EXTRACT_CONVERSATION':
           const messages = extractConversation(config.conversationSelector);
           sendResponse({ success: true, data: messages });
+          break;
+
+        case 'EXTRACT_CODE_BLOCKS':
+          const codeBlocks = extractCodeBlocks(config.codeBlockSelector, config.codeBlockHeaderSelector);
+          sendResponse({ success: true, data: codeBlocks });
           break;
 
         default:

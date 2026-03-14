@@ -10,10 +10,14 @@
   import ThemeProvider from './components/ThemeProvider.svelte';
   import Navigation from './components/Navigation.svelte';
 
+  import type { CodeBlock } from '../../shared/types';
+  import CaptureCodeBlocks from './views/CaptureCodeBlocks.svelte';
+
   let currentView: SidebarView = $state('projects');
   let selectedProjectId: string | null = $state(null);
   let capturedText: string = $state('');
   let capturedUrl: string = $state('');
+  let capturedCodeBlocks: CodeBlock[] = $state([]);
   let theme: GlobalTheme = $state({ ...DEFAULT_THEME });
 
   // Load theme on mount
@@ -38,6 +42,11 @@
         capturedText = message.payload.text;
         capturedUrl = message.payload.url;
         currentView = 'capture';
+      }
+      if (message.type === 'CAPTURED_CODE_BLOCK') {
+        capturedCodeBlocks = message.payload.blocks;
+        capturedUrl = message.payload.url;
+        currentView = 'capture-code';
       }
     };
     chrome.runtime.onMessage.addListener(captureHandler);
@@ -89,6 +98,13 @@
       {:else if currentView === 'capture'}
         <Capture
           text={capturedText}
+          sourceUrl={capturedUrl}
+          onSaved={() => navigate('projects')}
+          onCancel={() => navigate('projects')}
+        />
+      {:else if currentView === 'capture-code'}
+        <CaptureCodeBlocks
+          blocks={capturedCodeBlocks}
           sourceUrl={capturedUrl}
           onSaved={() => navigate('projects')}
           onCancel={() => navigate('projects')}

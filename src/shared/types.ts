@@ -35,6 +35,16 @@ export interface GlobalTheme {
   sidebar_width: number;
 }
 
+// --- Code Block ---
+
+export interface CodeBlock {
+  code: string;
+  language: string;
+  filename?: string;
+}
+
+export type SnippetContentType = 'text' | 'code';
+
 // --- Core Data ---
 
 export interface Project {
@@ -53,6 +63,9 @@ export interface ContextSnippet {
   project_id: string;
   title: string;
   content: string;
+  content_type: SnippetContentType;
+  language?: string;
+  filename?: string;
   source_platform: Platform;
   source_url?: string;
   tags: string[];
@@ -115,7 +128,9 @@ export type MessageType =
   | 'SET_THEME'
   | 'CAPTURE_SELECTION'
   | 'CAPTURED_TEXT'
+  | 'CAPTURED_CODE_BLOCK'
   | 'EXTRACT_CONVERSATION'
+  | 'EXTRACT_CODE_BLOCKS'
   | 'INJECT_PROMPT';
 
 export interface Message {
@@ -136,5 +151,6 @@ export type SidebarView =
   | 'project-detail'
   | 'compose'
   | 'capture'
+  | 'capture-code'
   | 'drift'
   | 'settings';

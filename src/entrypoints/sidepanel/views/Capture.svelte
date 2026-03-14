@@ -76,6 +76,7 @@
       project_id: selectedProjectId,
       title: title.trim(),
       content: content.trim(),
+      content_type: 'text',
       source_platform: sourcePlatform,
       source_url: sourceUrl || undefined,
       tags: [],
