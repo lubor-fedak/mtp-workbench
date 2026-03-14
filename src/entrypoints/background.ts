@@ -19,6 +19,7 @@ import {
   setTheme,
   updateProject,
   updateSnippet,
+  searchSnippets,
 } from '../lib/storage';
 import {
   exportProject,
@@ -81,9 +82,36 @@ export default defineBackground(() => {
     .setPanelBehavior({ openPanelOnActionClick: true })
     .catch(console.error);
 
+  // Badge update handler (from content scripts)
+  chrome.runtime.onMessage.addListener(
+    (message: any, sender) => {
+      if (message.type === 'UPDATE_BADGE' && sender.tab?.id) {
+        const count = message.payload?.count ?? 0;
+        chrome.action.setBadgeText({
+          text: count > 0 ? String(count) : '',
+          tabId: sender.tab.id,
+        });
+        chrome.action.setBadgeBackgroundColor({
+          color: '#6366f1',
+          tabId: sender.tab.id,
+        });
+      }
+    },
+  );
+
+  // Clear badge when navigating away from supported sites
+  chrome.tabs.onUpdated.addListener((tabId, changeInfo) => {
+    if (changeInfo.status === 'loading') {
+      chrome.action.setBadgeText({ text: '', tabId });
+    }
+  });
+
   // Message router
   chrome.runtime.onMessage.addListener(
     (message: Message, _sender, sendResponse: (response: MessageResponse) => void) => {
+      // Skip badge messages (handled above)
+      if (message.type === 'UPDATE_BADGE') return false;
+
       handleMessage(message)
         .then(sendResponse)
         .catch((error) =>
@@ -150,6 +178,10 @@ async function handleMessage(message: Message): Promise<MessageResponse> {
     case 'SET_THEME':
       await setTheme(payload as any);
       return { success: true };
+
+    // Search
+    case 'SEARCH_SNIPPETS':
+      return { success: true, data: await searchSnippets((payload as any).query) };
 
     // Export / Import
     case 'EXPORT_PROJECT':

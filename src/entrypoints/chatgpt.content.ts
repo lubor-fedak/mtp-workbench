@@ -10,6 +10,18 @@ const config = PLATFORM_CONFIGS.chatgpt;
 export default defineContentScript({
   matches: ['*://chatgpt.com/*', '*://chat.openai.com/*'],
   main() {
+    let badgeTimeout: ReturnType<typeof setTimeout>;
+    function updateBadge() {
+      clearTimeout(badgeTimeout);
+      badgeTimeout = setTimeout(() => {
+        const count = document.querySelectorAll(config.codeBlockSelector).length;
+        chrome.runtime.sendMessage({ type: 'UPDATE_BADGE', payload: { count } });
+      }, 500);
+    }
+    const observer = new MutationObserver(() => { updateBadge(); });
+    observer.observe(document.body, { childList: true, subtree: true });
+    updateBadge();
+
     chrome.runtime.onMessage.addListener((message, _sender, sendResponse) => {
       switch (message.type) {
         case 'CAPTURE_SELECTION':

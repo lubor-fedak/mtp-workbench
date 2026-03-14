@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { Pencil, Trash2 } from 'lucide-svelte';
+  import { Pencil, Trash2, Copy, Check } from 'lucide-svelte';
   import type { ContextSnippet } from '../../../shared/types';
   import { getPlatformName } from '../../../shared/platforms';
 
@@ -11,6 +11,8 @@
 
   let { snippet, onEdit, onDelete }: Props = $props();
 
+  let copied: boolean = $state(false);
+
   let formattedDate = $derived(
     new Date(snippet.created_at).toLocaleDateString(undefined, {
       month: 'short',
@@ -18,12 +20,30 @@
       year: 'numeric',
     })
   );
+
+  function handleCopy() {
+    navigator.clipboard.writeText(snippet.content);
+    copied = true;
+    setTimeout(() => { copied = false; }, 1500);
+  }
 </script>
 
 <div class="card snippet-card">
   <div class="snippet-header">
     <h3 class="snippet-title">{snippet.title}</h3>
     <div class="snippet-actions">
+      <button
+        class="btn btn-ghost btn-icon"
+        class:copied
+        onclick={handleCopy}
+        aria-label={copied ? 'Copied' : 'Copy to clipboard'}
+      >
+        {#if copied}
+          <Check size={14} />
+        {:else}
+          <Copy size={14} />
+        {/if}
+      </button>
       <button class="btn btn-ghost btn-icon" onclick={onEdit} aria-label="Edit snippet">
         <Pencil size={14} />
       </button>
@@ -89,6 +109,10 @@
     display: flex;
     gap: 2px;
     flex-shrink: 0;
+  }
+
+  .snippet-actions .copied {
+    color: var(--mtp-accent);
   }
 
   .snippet-content {

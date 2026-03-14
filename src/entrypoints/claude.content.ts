@@ -10,6 +10,20 @@ const config = PLATFORM_CONFIGS.claude;
 export default defineContentScript({
   matches: ['*://claude.ai/*'],
   main() {
+    // Track code blocks and update badge (debounced to avoid spam during streaming)
+    let badgeTimeout: ReturnType<typeof setTimeout>;
+    function updateBadge() {
+      clearTimeout(badgeTimeout);
+      badgeTimeout = setTimeout(() => {
+        const count = document.querySelectorAll(config.codeBlockSelector).length;
+        chrome.runtime.sendMessage({ type: 'UPDATE_BADGE', payload: { count } });
+      }, 500);
+    }
+
+    const observer = new MutationObserver(() => { updateBadge(); });
+    observer.observe(document.body, { childList: true, subtree: true });
+    updateBadge();
+
     // Listen for messages from the extension
     chrome.runtime.onMessage.addListener((message, _sender, sendResponse) => {
       switch (message.type) {

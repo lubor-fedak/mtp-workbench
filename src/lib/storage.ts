@@ -137,3 +137,41 @@ export async function createRecord(record: ExecutionRecord): Promise<ExecutionRe
   await db.records.add(record);
   return record;
 }
+
+// ---- Search ----
+
+export interface SearchResult {
+  snippet: ContextSnippet;
+  project_name: string;
+  project_id: string;
+  project_color: string;
+}
+
+export async function searchSnippets(query: string): Promise<SearchResult[]> {
+  const q = query.toLowerCase();
+  const allSnippets = await db.snippets.toArray();
+  const allProjects = await db.projects.toArray();
+
+  const projectMap = new Map(allProjects.map((p) => [p.id, p]));
+
+  const results: SearchResult[] = [];
+  for (const snippet of allSnippets) {
+    const matchesTitle = snippet.title.toLowerCase().includes(q);
+    const matchesContent = snippet.content.toLowerCase().includes(q);
+    const matchesTags = snippet.tags.some((t) => t.toLowerCase().includes(q));
+    const matchesFilename = snippet.filename?.toLowerCase().includes(q);
+    const matchesLanguage = snippet.language?.toLowerCase().includes(q);
+
+    if (matchesTitle || matchesContent || matchesTags || matchesFilename || matchesLanguage) {
+      const project = projectMap.get(snippet.project_id);
+      results.push({
+        snippet,
+        project_name: project?.name ?? 'Unknown',
+        project_id: snippet.project_id,
+        project_color: project?.appearance.color ?? '#6366f1',
+      });
+    }
+  }
+
+  return results;
+}

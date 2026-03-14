@@ -143,6 +143,7 @@ export type MessageType =
   | 'CREATE_RECORD'
   | 'GET_THEME'
   | 'SET_THEME'
+  | 'SEARCH_SNIPPETS'
   | 'EXPORT_PROJECT'
   | 'EXPORT_ALL_PROJECTS'
   | 'IMPORT_PROJECT'
